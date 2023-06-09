@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_counter_mobx/logic/counter.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+
+final counter = Counter();
 
 class HomePage extends StatelessWidget {
   final String title;
@@ -12,9 +16,24 @@ class HomePage extends StatelessWidget {
         title: Text(title),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
-      body: const Center(child: Text('Home Page')),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            const Text(
+              'Number of Count: ',
+              style: TextStyle(fontSize: 25),
+            ),
+            Observer(
+                builder: (_) => Text(
+                      '${counter.count}',
+                      style: const TextStyle(fontSize: 30),
+                    ))
+          ],
+        ),
+      ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: counter.increment,
         child: const Icon(Icons.add),
       ),
     );

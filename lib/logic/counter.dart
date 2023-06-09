@@ -12,4 +12,10 @@ abstract class _Counter with Store {
   void increment() {
     count++;
   }
+
+  @action
+  void decrement() {
+    if (count <= 0) return;
+    count--;
+  }
 }

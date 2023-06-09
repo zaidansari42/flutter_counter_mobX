@@ -32,10 +32,28 @@ class HomePage extends StatelessWidget {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: counter.increment,
-        child: const Icon(Icons.add),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            FloatingActionButton(
+              onPressed: counter.increment,
+              child: const Icon(Icons.add),
+            ),
+            const SizedBox(
+              width: 20,
+            ),
+            FloatingActionButton(
+              onPressed: counter.decrement,
+              child: const Icon(Icons.remove),
+            )
+          ],
+        ),
       ),
+      floatingActionButtonLocation:
+          FloatingActionButtonLocation.miniCenterDocked,
     );
   }
 }
